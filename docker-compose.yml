@@ -16,7 +16,7 @@ services:
     env_file: .env
     volumes:
       - static:/backend_static
-      - media
+      - media:/media/cats/images/
     depends_on:
       - kittygram
   frontend:
@@ -32,4 +32,4 @@ services:
       - 9000:8080
     volumes:
       - static:/staticfiles
-      - media
+      - media:/media/cats/images/

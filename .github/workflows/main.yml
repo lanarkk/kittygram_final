@@ -1,9 +1,6 @@
 name: Main Kittygram workflow
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   tests:
@@ -172,11 +169,13 @@ jobs:
   send_message:
     if: github.ref != 'refs/heads/master'
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: 
+      - tests
+      - frontend_tests
     steps:
     - name: Send message if not main and tests were passed
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Тесты kittygram прошли успешно! Пуш сделал - (github.actor), Сообщение коммита - (github.event.commits[0].message). Ссылка на коммит - https://github.com/${{ github.repository }}/commit/${{github.sha}}
+        message: Тесты kittygram прошли успешно! Пуш сделал - {{ github.actor }}, Сообщение коммита - {{ github.event.commits[0].message }}.\n Ссылка на коммит - https://github.com/${{ github.repository }}/commit/${{github.sha}}

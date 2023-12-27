@@ -119,4 +119,5 @@ sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/col
 ## Автор:
 
 Федякин Максим.
+
 [github](https://github.com/lanarkk), [telegram](https://t.me/rapedwhore).

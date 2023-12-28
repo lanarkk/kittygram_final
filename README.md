@@ -96,6 +96,8 @@ POSTGRES_PASSWORD=kittygram_password
 POSTGRES_DB=kittygram
 DB_HOST=db
 DB_PORT=5432
+DEBUG=True
+ALLOWED_HOSTS=localhost^127.0.0.1
 ```
 
 Пока docker работает запустите docker-compose, соберите статику и примените миграции командой:
